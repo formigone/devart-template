@@ -1,16 +1,22 @@
 {
     "technologies": {
+        "languages": [
+            "java"
+        ],
         "apis": [
-            "insert apis"
+            "Google Plus"
         ],
         "platforms": [
-            "insert platforms"
+            "app engine"
         ],
         "toolkits": [
-            "insert toolkits"
+            "gwt"
         ]
     },
     "themes": [
-        "insert themes"
+        "science",
+        "image",
+        "vision",
+        "life"
     ]
 }

@@ -1,17 +1,14 @@
 # Project Title
-Insert the name of your project
+Your Game of Life
 
 ## Authors
-- Insert main author name, surname, github account
-- Insert other author(s) name, surname, github account (one per list element)
+- Rodrigo Silveira, http://www.rodrigo-silveira.com
 
 ## Description
-Insert a description containing about 100 to 150 words, including your motivation and the meaning behind your idea and execution. The Judges will be keen to know how your idea pushes the boundaries of code and technology. 
+Inspired by Conway's Game of Life, this version of the game uses a photograph to seed the initial state of the board.
 
 ## Link to Prototype
-NOTE: If your project lives online you can add one or more links here. Make sure you have a stable version of your project running before linking it.
-
-[Example Link](http://www.google.com "Example Link")
+[Coming Soon](http://www.rodrigo-silveira.com "Rodrigo Silveira")
 
 ## Example Code
 NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
@@ -21,9 +18,7 @@ function test() {
 }
 ```
 ## Links to External Libraries
- NOTE: You can also use this space to link to external libraries or Github repositories you used on your project.
-
-[Example Link](http://www.google.com "Example Link")
+[Google Web Toolkit](http://www.gwtproject.org "GWT")
 
 ## Images & Videos
 NOTE: For additional images you can either use a relative link to an image on this repo or an absolute link to an externally hosted image.
