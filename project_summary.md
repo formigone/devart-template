@@ -1,5 +1,5 @@
 # Project Title
-Your Game of Life
+Biopixology
 
 ## Authors
 - Rodrigo Silveira, http://www.rodrigo-silveira.com

@@ -1,7 +1,7 @@
 {
     "technologies": {
         "languages": [
-            "java"
+            "javascript"
         ],
         "apis": [
             "Google Plus"
@@ -10,7 +10,7 @@
             "app engine"
         ],
         "toolkits": [
-            "gwt"
+            "google closure"
         ]
     },
     "themes": [
