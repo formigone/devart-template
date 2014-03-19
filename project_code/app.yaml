@@ -10,16 +10,6 @@ handlers:
 - url: /css
   static_dir: css
 
-# ----------------
-- url: /lib
-  static_dir: lib
-
-# ----------------
-# --- Dev only ---
-# ----------------
-#- url: /src
-#  static_dir: src
-
 - url: /favicon.ico
   static_files: favicon.ico
   upload: favicon.ico
