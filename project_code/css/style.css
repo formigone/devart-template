@@ -1,51 +1,12 @@
-/*
-html, body {
-    margin: 0;
-    padding: 0;
-    background: #fff;
-    font-family: arial, sans-serif;
-}
-
-canvas {
-    display: block;
-    margin: 0 auto;
-}
-
-.nav {
-    background: #000033;
-}
-
-.nav-title {
-    padding: 10px;
-    margin: 0;
-    color: #ddd;
-    font-weight: 300;
-}
-
-.row {
-    clear: both;
-    overflow: auto;
+body {
+    background: url("../img/blue-banner.jpg") no-repeat fixed;
 }
 
 .panel {
-    margin: 20px;
-    background: #c00;
+    padding: 23% 0 10%;
+    background: transparent;
 }
 
-.col-pc-50 {
-    width: 50%;
-    float: left;
-}
-*/
-
-#chartView, #graphView {
-    display: block;
-    width: 100% !important;
-    height: 200px;
-    background: #fff;
-    margin: 0 0 20px;
-}
-
-#chartView {
-    height: 300px;
+.navbar {
+    background: rgba(250, 250, 250, 0.25);
 }
