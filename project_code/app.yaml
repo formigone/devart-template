@@ -14,9 +14,9 @@ handlers:
   static_files: favicon.ico
   upload: favicon.ico
 
-- url: /app.html
-  static_files: app.html
-  upload: app.html
+- url: /about.php
+  static_files: about.php
+  upload: about.php
 
 - url: /app.comp.js
   static_files: app.comp.js
@@ -27,4 +27,4 @@ handlers:
   upload: app.comp.js.map
 
 - url: /.*
-  script: index.html
+  script: index.php

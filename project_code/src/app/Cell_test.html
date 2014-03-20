@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<!--
+Copyright 2014 Rodrigo Silveira. All Rights Reserved.
+
+-->
+<head>
+    <title>BioPixology - app.Cell</title>
+    <script src="/lib/closure/goog/base.js"></script>
+    <script src="/deps.js"></script>
+    <script>
+        goog.require('app.Cell');
+        goog.require('goog.testing.jsunit');
+    </script>
+</head>
+<body>
+<script>
+
+    function test_Simulation_NoConstructorArgs_EmptyConstructorWorks() {
+        var cell = new app.Cell();
+
+        assertTrue("should be instantiate", cell instanceof app.Cell)
+    }
+</script>
+</body>
+</html>

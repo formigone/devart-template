@@ -51,12 +51,21 @@
 
             <div class="mastfoot">
                 <p>Copyright &copy; 2014 <a href="http://www.rodrigo-silveira.com">Rodrigo Silveira</a>. All rights
-                reserved. <a href="https://devart.withgoogle.com/#/project/17886819">A DevArt project</a>.</p>
+                    reserved. <a href="https://devart.withgoogle.com/#/project/17886819">A DevArt project</a>.</p>
             </div>
         </div>
     </div>
 </div>
-</div>
+
+<?php if (getenv("APPLICATION_ENV") == "development"): ?>
+    <script src="/lib/closure/goog/base.js"></script>
+    <script src="deps.js"></script>
+    <script src="app.js"></script>
+<?php else: ?>
+    <script src="app.comp.js"></script>
+<?php endif; ?>
+<script>main();</script>
+
 
 </body>
 </html>
