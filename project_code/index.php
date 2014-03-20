@@ -34,7 +34,7 @@
                     </a>
                     <ul class="nav masthead-nav">
                         <li class="active"><a href="#">Create Life</a></li>
-                        <li><a href="/about.php">About</a></li>
+                        <li><a href="/about">About</a></li>
                     </ul>
                 </div>
             </div>

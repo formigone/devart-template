@@ -14,10 +14,6 @@ handlers:
   static_files: favicon.ico
   upload: favicon.ico
 
-- url: /about.php
-  static_files: about.php
-  upload: about.php
-
 - url: /app.comp.js
   static_files: app.comp.js
   upload: app.comp.js
@@ -25,6 +21,10 @@ handlers:
 - url: /app.comp.js.map
   static_files: app.comp.js.map
   upload: app.comp.js.map
+
+
+- url: /about
+  script: about.php
 
 - url: /.*
   script: index.php
