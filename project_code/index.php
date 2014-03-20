@@ -45,7 +45,7 @@
                 <p class="lead">Seed Conway's <em>The Game of Life</em> worlds with photographs.</p>
 
                 <p class="lead">
-                    <a href="/about.php" class="btn btn-lg btn-warning">Play now!</a>
+                    <a href="/about" class="btn btn-lg btn-warning">Play now!</a>
                 </p>
             </div>
 
