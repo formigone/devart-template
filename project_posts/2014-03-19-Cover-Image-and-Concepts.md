@@ -1,5 +1,5 @@
-TODO: Create a project cover, as well as a few concept sketches.
+Got a simple website up explaining the project, as well as the main set up for the project. The idea is to only have two pages: *About* and *Create Life*. The *Create Life* page will have an input field where a path to an image is entered, and the main application will then execute.
 
-![Example Image](../project_images/cover.jpg?raw=true "Example Image")
+The application is hosted in AppEngine, and uses Google Closure tools. It also uses Twitter Bootstrap 3 on the UI.
 
-https://www.youtube.com/watch?v=30yGOxJJ2PQ
+![BioPixology Logo](../project_code/img/logo.png?raw=true "BioPixology")
