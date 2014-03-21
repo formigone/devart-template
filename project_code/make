@@ -19,9 +19,6 @@ then
      --compiler_flags="--create_source_map=app.comp.js.map" \
      --compiler_flags="--warning_level=VERBOSE" \
      --compiler_flags="--language_in=ECMASCRIPT5" \
-          --compiler_flags="--externs=ext/three.ext.js" \
-          --compiler_flags="--externs=ext/smoothie.ext.js" \
-          --compiler_flags="--externs=ext/amcharts.ext.js" \
      > app.comp.js
 else
     ./lib/closure/bin/build/closurebuilder.py \
@@ -34,9 +31,6 @@ else
      --compiler_flags="--create_source_map=app.comp.js.map" \
      --compiler_flags="--warning_level=VERBOSE" \
      --compiler_flags="--language_in=ECMASCRIPT5" \
-     --compiler_flags="--externs=ext/three.ext.js" \
-     --compiler_flags="--externs=ext/smoothie.ext.js" \
-     --compiler_flags="--externs=ext/amcharts.ext.js" \
      > app.comp.js
 fi
 

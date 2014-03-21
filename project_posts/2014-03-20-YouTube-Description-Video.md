@@ -1,5 +1,18 @@
-TODO: Create 2-4 minute YouTube video explaining idea. Would be cool to record each session and share with #EasyLearnTutorial.
+Conway's Game of Life
+---------------------
+A cellular automaton that models life based on 4 simple rules. The game is zero-player, meaning that its rules keep the game going, with the only input necessary being the initial seeding of the board.
+
+
+Rules
+-----
+
+ 1. Any live cell with fewer than two live neighbours dies, as if caused by under-population.
+ 2. Any live cell with two or three live neighbours lives on to the next generation.
+ 3. Any live cell with more than three live neighbours dies, as if by overcrowding.
+ 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 ![Example Image](../project_images/cover.jpg?raw=true "Example Image")
 
-https://www.youtube.com/watch?v=30yGOxJJ2PQ
+https://www.youtube.com/watch?v=FdMzngWchDk
+
+https://www.youtube.com/watch?v=k2IZ1qsx4CM
