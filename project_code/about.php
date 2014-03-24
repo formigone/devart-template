@@ -44,7 +44,7 @@
 
 
                 <p class="lead">
-                    <a href="/" class="btn btn-lg btn-success">Play now!</a>
+                    <a href="/play" class="btn btn-lg btn-success">Play now!</a>
                 </p>
             </div>
 

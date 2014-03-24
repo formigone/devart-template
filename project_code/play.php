@@ -39,14 +39,8 @@
             </div>
          </div>
 
-         <div class="inner cover">
-            <h1 class="cover-heading">BioPixology: A DevArt project</h1>
-
-            <p class="lead">Seed Conway's <em>The Game of Life</em> worlds with photographs.</p>
-
-            <p class="lead">
-               <a href="/play" class="btn btn-lg btn-warning">Play now!</a>
-            </p>
+         <div class="cover-container">
+            <div id="screen"></div>
          </div>
 
          <div class="mastfoot">
@@ -54,12 +48,18 @@
                reserved. <a href="https://devart.withgoogle.com/#/project/17886819">A DevArt project</a>.</p>
          </div>
       </div>
-
-      <div class="cover-container">
-         <div id="screen"></div>
-      </div>
    </div>
 </div>
+
+<?php if (getenv("APPLICATION_ENV") == "development"): ?>
+   <script src="/lib/closure/goog/base.js"></script>
+   <script src="deps.js"></script>
+   <script src="app.js"></script>
+<?php else: ?>
+   <script src="app.comp.js"></script>
+<?php endif; ?>
+<script>main();</script>
+
 
 </body>
 </html>

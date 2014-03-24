@@ -26,5 +26,8 @@ handlers:
 - url: /about
   script: about.php
 
+- url: /play
+  script: play.php
+
 - url: /.*
   script: index.php
