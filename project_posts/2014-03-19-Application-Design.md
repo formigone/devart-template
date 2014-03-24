@@ -20,6 +20,9 @@ Application Design
 **GameLoop**
  - Implements simple game loop logic so rendering is consistent
 
+**ImageProcessor**
+ - Uses a Canvas to process some image, such as sampling for color palette, separating background from foreground, etc.
+
 JSUML
 ---
 
@@ -31,7 +34,8 @@ JSUML
         },
         ctx: 'CanvasRenderingContext2D',
         clear: function(){},
-        draw: function(x, y, width, height, color){}
+        draw: function(x, y, width, height, color){},
+        getDrawingContext: function(){}
     };
 
     Board = {
@@ -77,4 +81,17 @@ JSUML
         init: function(){},
         run: function(){},
         render: function(){},
+    };
+
+    ImageProcessor = {
+        ctx: 'CanvasRenderingContext2D',
+        palette: 'Array<string>', /* hex values */
+        data: {
+            width: 900,
+            height: 400,
+            map: 'Array<number>'  /* -1 = background   0 = middle-tone   1 = foreground */
+        },
+        image: 'string',
+        getLayers: function(){},
+        setImage: function(url){}
     };
