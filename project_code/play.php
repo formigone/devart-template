@@ -12,9 +12,8 @@
    <link rel="stylesheet" href="css/bootstrap.min.css"/>
    <link rel="stylesheet" href="css/style.css"/>
    <style>
-      <?php $rand = rand(1, 12); ?>
       .stretchy {
-         background-image: url("img/banner-<?= $rand; ?>.jpg");
+         background-image: url("img/banner-6.jpg");
       }
    </style>
 </head>
