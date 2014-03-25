@@ -8,21 +8,26 @@ Biopixology
 Inspired by Conway's Game of Life, this version of the game uses a photograph to seed the initial state of the board.
 
 ## Link to Prototype
-[Coming Soon](http://www.rodrigo-silveira.com "Rodrigo Silveira")
+[BioPixology](http://www.biopixology.com/play "Play BioPixology")
 
 ## Example Code
-NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
 ```
-function test() {
-  console.log("Printing a test");
-}
+var SIZE = {
+    width: 700,
+    height: 450
+};
+
+var canvas = new app.Canvas(SIZE.width, SIZE.height);
+var board = new app.Board(canvas);
+
+canvas.bindTo(goog.dom.getElement('screen'));
+board.render();
 ```
 ## Links to External Libraries
 [Google Web Toolkit](http://www.gwtproject.org "GWT")
 
 ## Images & Videos
-NOTE: For additional images you can either use a relative link to an image on this repo or an absolute link to an externally hosted image.
 
-![Example Image](project_images/cover.jpg?raw=true "Example Image")
+![My Idea](project_images/cover.jpg?raw=true "BioPixology")
 
-https://www.youtube.com/watch?v=30yGOxJJ2PQ
+https://www.youtube.com/watch?v=Uo8Fq_QSQFY
