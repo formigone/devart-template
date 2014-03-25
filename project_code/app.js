@@ -2,6 +2,7 @@ goog.provide('app.go');
 
 goog.require('app.Canvas');
 goog.require('app.Board');
+goog.require('app.GameLoop');
 
 goog.require('goog.dom');
 
@@ -17,9 +18,9 @@ var main = function() {
     };
 
     var colors = {
-        DEAD: 'rgba(10, 10, 10, 0.01)',
+        DEAD: 'rgba(0, 0, 0, 0.005)',
         LIVE: 'rgba(0, 255, 0, 0.05)',
-        GONE: 'rgba(0, 150, 0, 0.02)'
+        GONE: 'rgba(0, 150, 0, 0.01)'
     };
 
 //    var colors = {
@@ -28,31 +29,25 @@ var main = function() {
 //        GONE: 'rgba(150, 0, 0, 0.02)'
 //    };
 //
-    var iter = 0;
-    var MAX_ITER = 10;
-
     var canvas = new app.Canvas(SIZE.width, SIZE.height);
+    var _canvas = canvas.getElement();
     var board = new app.Board(canvas, colors, CELL_SIZE);
+    var game = null;
 
-    canvas.element.width = SIZE.width * CELL_SIZE.width;
-    canvas.element.height = SIZE.height * CELL_SIZE.height;
-//    canvas.getDrawingContext().webkitImageSmoothingEnabled = 'smooth';
+    _canvas.width = SIZE.width * CELL_SIZE.width;
+    _canvas.height = SIZE.height * CELL_SIZE.height;
+
+    game = new app.GameLoop(23, {
+        onUpdate: function(time) {
+            board.update();
+        },
+        onDraw: function(time) {
+            board.render();
+        }
+    });
 
     canvas.bindTo(goog.dom.getElement('screen'));
-
-    function up() {
-        iter++;
-        board.update();
-        if (iter > MAX_ITER) {
-//            canvas.clear();
-            iter = 0;
-        }
-
-        board.render();
-        setTimeout(up, 50);
-    }
-
-    up();
+    game.run();
 };
 
 goog.exportSymbol('main', main);

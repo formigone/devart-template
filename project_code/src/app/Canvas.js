@@ -67,3 +67,11 @@ app.Canvas.prototype.getDrawingContext = function() {
 app.Canvas.prototype.bindTo = function(panel){
     goog.dom.append(panel, this.element);
 };
+
+/**
+ *
+ * @returns {Element}
+ */
+app.Canvas.prototype.getElement = function() {
+    return this.element;
+};

@@ -10,7 +10,7 @@ goog.require('app.Cell');
  * @constructor
  */
 app.Board = function(canvas, colors, size) {
-    size = size || {};
+    size = size || /** @type {app.Board.CellSize} */ ({});
 
     /**
      *
@@ -101,7 +101,7 @@ app.Board.prototype.update = function() {
 app.Board.prototype.render = function() {
     var pos = {};
     var color = '';
-    var rnd = parseInt(Math.random() * 23) - 8;
+    var rnd = parseInt(Math.random() * 23, 10) - 8;
 
     for (var i = 0, len = this.size.width * this.size.height; i < len; i++) {
         pos = this.getXY(i);

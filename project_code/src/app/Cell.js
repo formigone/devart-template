@@ -2,7 +2,7 @@ goog.provide('app.Cell');
 
 /**
  *
- * @param {bool=} current
+ * @param {boolean=} current
  * @constructor
  */
 app.Cell = function(current) {

@@ -3,11 +3,10 @@ goog.provide('app.GameLoop');
 /**
  *
  * @param {number} fps
+ * @param {Object} options
  * @constructor
  */
-app.GameLoop = function(fps) {
-    this.objs = [];
-
+app.GameLoop = function(fps, options) {
     if (goog.isDefAndNotNull(options.onUpdate) && goog.isFunction(options.onUpdate)) {
         this.onUpdate = options.onUpdate;
     }
@@ -41,24 +40,24 @@ app.GameLoop.prototype.stop = function() {
 };
 
 app.GameLoop.prototype.go = function(time) {
-    if (this.isRunning) {
+    if (this.running) {
         this.delta = time - this.lastTime;
+
         if (this.delta >= this.freq) {
             this.onUpdate(time);
             this.onDraw(time);
 
             this.lastTime = time;
         }
-
-        requestAnimationFrame(this.go.bind(this));
     }
 
+    requestAnimationFrame(this.go.bind(this));
 };
 
-app.GameLoop.prototype.render = function() {
+app.GameLoop.prototype.onUpdate = function(time) {
 };
 
-app.GameLoop.prototype.onRender = function() {
+app.GameLoop.prototype.onDraw = function(time) {
 };
 
 app.GameLoop.prototype.onInit = function() {
