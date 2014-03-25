@@ -9,13 +9,20 @@ goog.require('goog.dom');
  * @constructor
  */
 app.Canvas = function(width, height) {
+
+    /** @type {number} */
+    this.height = height || 400;
+
+    /** @type {number} */
+    this.width = width || 900;
+
     /**
      * @private
      * @type {Element}
      */
     this.element = goog.dom.createDom('canvas', {
-        width: width || 900,
-        height: height || 400
+        width: this.width,
+        height: this.height
     });
 
     /**

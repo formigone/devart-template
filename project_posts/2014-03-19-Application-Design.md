@@ -33,7 +33,7 @@ JSUML
             height: 400
         },
         ctx: 'CanvasRenderingContext2D',
-        bind: function(panel){},
+        bindTo: function(panel){},
         clear: function(){},
         draw: function(x, y, width, height, color){},
         getDrawingContext: function(){}

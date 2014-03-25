@@ -2,11 +2,12 @@ goog.provide('app.Cell');
 
 /**
  *
+ * @param {bool=} current
  * @constructor
  */
-app.Cell = function() {
+app.Cell = function(current) {
     this.state = {
-        curr: false,
+        curr: current || false,
         last: false,
         next: false
     };

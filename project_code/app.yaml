@@ -23,6 +23,27 @@ handlers:
   upload: app.comp.js.map
 
 
+# - - - - -
+# Dev only
+# v-v-v-v-v
+- url: /app.js
+  static_files: app.js
+  upload: app.js
+
+- url: /deps.js
+  static_files: deps.js
+  upload: deps.js
+
+- url: /lib
+  static_dir: lib
+
+- url: /src
+  static_dir: src
+# ^ ^ ^ ^ ^
+# Dev only
+# - - - - -
+
+
 - url: /about
   script: about.php
 
