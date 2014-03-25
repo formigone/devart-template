@@ -15,6 +15,24 @@
         .stretchy {
             background-image: url("img/banner-6.jpg");
         }
+
+        #screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.75);
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #screen canvas {
+            width: 95%;
+            height: 96%;
+            display: block;
+            margin: 2% auto 0;
+        }
     </style>
 </head>
 

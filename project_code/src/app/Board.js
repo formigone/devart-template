@@ -101,14 +101,23 @@ app.Board.prototype.update = function() {
 app.Board.prototype.render = function() {
     var pos = {};
     var color = '';
+    var rnd = parseInt(Math.random() * 23) - 8;
 
     for (var i = 0, len = this.size.width * this.size.height; i < len; i++) {
         pos = this.getXY(i);
         color = this.grid[i].state.curr ? this.colors.LIVE : this.colors.DEAD;
         this.canvas.draw(pos.x * this.cellSize.width, pos.y * this.cellSize.height, this.cellSize.width, this.cellSize.height, color);
 
-        color = this.grid[i].state.last ? this.colors.GONE : this.colors.DEAD;
-        this.canvas.draw(pos.x * this.cellSize.width, pos.y * this.cellSize.height, this.cellSize.width, this.cellSize.height, color);
+        if (this.grid[i].state.last && !this.grid[i].state.curr) {
+            this.canvas.draw(pos.x * this.cellSize.width, pos.y * this.cellSize.height, this.cellSize.width, this.cellSize.height + rnd, this.colors.GONE);
+        }
+
+//        if (this.grid[i].state.next) {
+//            this.canvas.draw(pos.x * this.cellSize.width, pos.y * this.cellSize.height, this.cellSize.width, this.cellSize.height * 2.5, this.colors.DEAD);
+//        }
+
+        this.canvas.draw(pos.x * this.cellSize.width * 1.5, pos.y * this.cellSize.height * 1.5, this.cellSize.width * 0.5, this.cellSize.height * 0.5, 'rgba(255, 255, 255, 0.0025)');
+//        this.canvas.draw(pos.x * this.cellSize.width * 1.5, pos.y * this.cellSize.height * 1.5, this.cellSize.width * 0.5, this.cellSize.height * rnd, 'rgba(0, 0, 0, 0.0025)');
     }
 };
 

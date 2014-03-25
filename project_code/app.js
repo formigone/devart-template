@@ -7,8 +7,8 @@ goog.require('goog.dom');
 
 var main = function() {
     var SIZE = {
-        width: 140,
-        height: 100
+        width: 100,
+        height: 70
     };
 
     var CELL_SIZE = {
@@ -17,19 +17,26 @@ var main = function() {
     };
 
     var colors = {
-        DEAD: 'rgba(10, 10, 10, 0.0)',
-        LIVE: 'rgba(75, 10, 10, 0.05)',
-        GONE: 'rgba(50, 50, 50, 0.005)'
+        DEAD: 'rgba(10, 10, 10, 0.01)',
+        LIVE: 'rgba(0, 255, 0, 0.05)',
+        GONE: 'rgba(0, 150, 0, 0.02)'
     };
 
+//    var colors = {
+//        DEAD: 'rgba(10, 10, 10, 0.01)',
+//        LIVE: 'rgba(255, 0, 0, 0.05)',
+//        GONE: 'rgba(150, 0, 0, 0.02)'
+//    };
+//
     var iter = 0;
-    var MAX_ITER = 10000;
+    var MAX_ITER = 10;
 
     var canvas = new app.Canvas(SIZE.width, SIZE.height);
     var board = new app.Board(canvas, colors, CELL_SIZE);
 
     canvas.element.width = SIZE.width * CELL_SIZE.width;
     canvas.element.height = SIZE.height * CELL_SIZE.height;
+//    canvas.getDrawingContext().webkitImageSmoothingEnabled = 'smooth';
 
     canvas.bindTo(goog.dom.getElement('screen'));
 
@@ -37,12 +44,12 @@ var main = function() {
         iter++;
         board.update();
         if (iter > MAX_ITER) {
-            canvas.clear();
+//            canvas.clear();
             iter = 0;
         }
 
         board.render();
-        setTimeout(up, 75);
+        setTimeout(up, 50);
     }
 
     up();
