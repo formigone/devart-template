@@ -29,7 +29,7 @@
 
       #screen canvas {
          width: 100%;
-         height: 90%;
+         height: 100%;
          display: block;
          margin: 0;
       }
@@ -42,7 +42,8 @@
          background: rgba(0, 0, 0, 0.75);
          width: 100%;
          margin: 0;
-         padding: 0 2.5%;
+         padding: 0 1%;
+         font-size: 2.0em;
          text-align: left;
       }
 
@@ -95,7 +96,10 @@
                <button type="button" class="bio-btn" id="btn-refresh">
                   <span class="glyphicon glyphicon-refresh"></span>
                </button>
-               <button type="button" class="bio-btn" id="btn-picture">
+               <button type="button" class="bio-btn" id="btn-toggle-sound">
+                  <span class="glyphicon glyphicon-volume-off"></span>
+               </button>
+                <button type="button" class="bio-btn" id="btn-picture">
                   <span class="glyphicon glyphicon-picture"></span>
                </button>
             </div>

@@ -46,7 +46,8 @@ var main = function() {
 
     var ctrl = {
         refresh: goog.dom.getElement('btn-refresh'),
-        play: goog.dom.getElement('btn-play')
+        play: goog.dom.getElement('btn-play'),
+        sound: goog.dom.getElement('btn-toggle-sound')
     };
 
     _canvas.width = SIZE.width * CELL_SIZE.width;
@@ -62,6 +63,7 @@ var main = function() {
 //        music.currentTime = 0;
         darkFade = 0.00;
         game.stop();
+        board = new app.Board(canvas, colors, CELL_SIZE);
         canvas.clear();
         go();
     }, false);
@@ -91,24 +93,50 @@ var main = function() {
             });
 
             this.setAttribute(attr, STATUS.playing);
+            this.children[0].classList.remove('glyphicon-play');
+            this.children[0].classList.add('glyphicon-pause');
             go();
         }
 
         if (status === STATUS.playing) {
-            game.stop();
             this.setAttribute(attr, STATUS.paused);
+            this.children[0].classList.remove('glyphicon-pause');
+            this.children[0].classList.add('glyphicon-play');
+            game.stop();
         } else if (status == STATUS.paused) {
-            game.run();
             this.setAttribute(attr, STATUS.playing);
+            this.children[0].classList.remove('glyphicon-play');
+            this.children[0].classList.add('glyphicon-pause');
+            game.run();
+        }
+    }, false);
+
+    ctrl.sound.addEventListener('click', function(){
+        var attr = 'data-status';
+        var volAttr = 'data-volume';
+        var STATUS = {
+            playing: 'playing',
+            paused: 'paused'
+        };
+
+        var status = this.getAttribute(attr);
+        var volume = this.getAttribute(volAttr);
+
+        if (!status || status === STATUS.playing) {
+            this.setAttribute(attr, STATUS.paused);
+            this.setAttribute(volAttr, music.volume);
+            this.children[0].classList.remove('glyphicon-volume-off');
+            this.children[0].classList.add('glyphicon-volume-up');
+            music.volume = 0;
+        } else if (status == STATUS.paused) {
+            this.setAttribute(attr, STATUS.playing);
+            this.children[0].classList.remove('glyphicon-volume-up');
+            this.children[0].classList.add('glyphicon-volume-off');
+            music.volume = volume;
         }
     }, false);
 
     canvas.bindTo(goog.dom.getElement('screen'));
-
-//setTimeout(function(){
-//    game.stop();
-//    music.pause();
-//}, 1500);
 };
 
 goog.exportSymbol('main', main);
