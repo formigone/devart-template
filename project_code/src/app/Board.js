@@ -74,11 +74,25 @@ app.Board.CellSize
 /** @typedef {{x: number, y: number}} */
 app.Board.Position
 
+/**
+ */
 app.Board.prototype.init = function() {
     for (var i = 0, len = this.size.width * this.size.height; i < len; i++) {
         this.grid[i] = new app.Cell(Math.random() * 100 > 75);
     }
 };
+
+/**
+ *
+ * @param {Array.<boolean>} grid
+ */
+app.Board.prototype.seed = function(grid) {
+    for (var i = 0, len = this.size.width * this.size.height; i < len; i++) {
+        this.grid[i].state.curr = grid[i] || false;
+        this.grid[i].state.last = grid[i] || false;
+        this.grid[i].state.next = grid[i] || false;
+    }
+}
 
 /**
  *

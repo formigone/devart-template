@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="eng">
+<html lang="eng" xmlns="http://www.w3.org/1999/html">
 <head>
    <meta charset="utf-8">
 
@@ -64,6 +64,22 @@
          background: rgba(0, 0, 0, 0.95);
          color: #c00;
       }
+
+      #btn-picture {
+         position: relative;
+      }
+
+      #ghost-file {
+         display: block;
+         opacity: 0;
+         position: absolute;
+         z-index: 9999;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         cursor: pointer;
+      }
    </style>
 </head>
 
@@ -99,7 +115,8 @@
                <button type="button" class="bio-btn" id="btn-toggle-sound">
                   <span class="glyphicon glyphicon-volume-off"></span>
                </button>
-                <button type="button" class="bio-btn" id="btn-picture">
+               <button type="button" class="bio-btn" id="btn-picture">
+                  <input type="file" id="ghost-file" />
                   <span class="glyphicon glyphicon-picture"></span>
                </button>
             </div>

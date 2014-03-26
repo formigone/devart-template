@@ -17,12 +17,6 @@ var main = function() {
         height: 5
     };
 
-//    var colors = {
-//        DEAD: 'rgba(0,   0, 0, 0.05)',
-//        LIVE: 'rgba(0, 255, 0, 0.5)',
-//        GONE: 'rgba(0, 100, 0, 0.05)'
-//    };
-
     var go = function() {
         game.run();
         music.play();
@@ -100,11 +94,48 @@ var main = function() {
 
     /** @this {Element} */
     var restart = function() {
-        darkFade = 0.00;
-        game.stop();
-        board = new app.Board(canvas, colors, CELL_SIZE);
+        if (board) {
+            darkFade = 0.00;
+            game.stop();
+            board = new app.Board(canvas, colors, CELL_SIZE);
+            canvas.clear();
+            go();
+        } else {
+            ctrl.play.click();
+        }
+    };
+
+    /** @this {Element} */
+    var getImage = function(e){
+        var g = [];
+        var rnd = parseInt(Math.random() * 100) % 3 + 3;
+        var files = e.target.files;
+        var reader = new FileReader();
+        var img = null;
+
+        if (files && files[0]) {
+            reader.onload = function(eReader) {
+                img = eReader.target.result;
+
+                if (img) {
+                    // TODO: analyze image and create grid from it
+                    document.body.style.background = 'url(' + img + ')';
+                }
+            };
+
+            reader.readAsDataURL(files[0]);
+        }
+
+        if (!board) {
+            ctrl.play.click();
+        }
+
+        for (var i = 0, len = SIZE.width * SIZE.height; i < len; i++) {
+            g[i] = i % rnd == 0;
+        }
+
         canvas.clear();
-        go();
+        board.seed(g);
     };
 
     /** @this {Element} */
@@ -143,6 +174,7 @@ var main = function() {
     ctrl.refresh.addEventListener('click', restart, false);
     ctrl.play.addEventListener('click', play, false);
     ctrl.sound.addEventListener('click', toggleSound, false);
+    ctrl.pic.addEventListener('change', getImage, false);
 
     canvas.bindTo(goog.dom.getElement('screen'));
 };
