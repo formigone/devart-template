@@ -17,6 +17,7 @@ then
      --compiler_jar=/usr/local/google-closure/compiler.jar \
      --compiler_flags="--compilation_level=WHITESPACE_ONLY" \
      --compiler_flags="--create_source_map=app.comp.js.map" \
+     --compiler_flags="--externs=ext/html5.min.js" \
      --compiler_flags="--warning_level=VERBOSE" \
      --compiler_flags="--language_in=ECMASCRIPT5" \
      > app.comp.js
@@ -29,6 +30,7 @@ else
      --compiler_jar=/usr/local/google-closure/compiler.jar \
      --compiler_flags="--compilation_level=$1" \
      --compiler_flags="--create_source_map=app.comp.js.map" \
+     --compiler_flags="--externs=ext/html5.min.js" \
      --compiler_flags="--warning_level=VERBOSE" \
      --compiler_flags="--language_in=ECMASCRIPT5" \
      > app.comp.js
