@@ -10,6 +10,9 @@ handlers:
 - url: /css
   static_dir: css
 
+- url: /sound
+  static_dir: sound
+
 - url: /favicon.ico
   static_files: favicon.ico
   upload: favicon.ico

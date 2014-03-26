@@ -26,13 +26,14 @@ var main = function() {
     var colors = {
         DEAD: 'rgba(10, 10, 10, 0.02)',
         LIVE: 'rgba(255, 0, 0, 0.05)',
-        GONE: 'rgba(150, 10, 0, 0.02)'
+        GONE: 'rgba(200, 0, 0, 0.005)'
     };
 
     var canvas = new app.Canvas(SIZE.width, SIZE.height);
     var _canvas = canvas.getElement();
     var board = new app.Board(canvas, colors, CELL_SIZE);
     var game = null;
+    var music = new Audio('sound/hitman-2.mp3');
 
     _canvas.width = SIZE.width * CELL_SIZE.width;
     _canvas.height = SIZE.height * CELL_SIZE.height;
@@ -46,8 +47,15 @@ var main = function() {
         }
     });
 
+    music.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+    }, false);
+
     canvas.bindTo(goog.dom.getElement('screen'));
     game.run();
+setTimeout(function(){ game.stop(); }, 1000);
+//    music.play();
 };
 
 goog.exportSymbol('main', main);

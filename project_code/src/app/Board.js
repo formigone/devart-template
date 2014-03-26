@@ -118,8 +118,7 @@ app.Board.prototype.render = function() {
         pos = this.getXY(i);
 
         if (this.grid[i].state.curr) {
-            this.canvas.draw(pos.x * this.cellSize.width, pos.y * this.cellSize.height, this.cellSize.width, 1, this.colors.GONE);
-            this.canvas.draw(pos.x * this.cellSize.width, pos.y * this.cellSize.height + this.cellSize.height, this.cellSize.width, 1, this.colors.GONE);
+            this.canvas.draw(pos.x * this.cellSize.width, pos.y * this.cellSize.height + this.cellSize.height, this.cellSize.width, 1, this.colors.DEAD);
             this.canvas.draw(pos.x * this.cellSize.width, pos.y * this.cellSize.height, this.cellSize.width, this.cellSize.height, this.colors.LIVE);
         } else {
             this.canvas.draw(pos.x * this.cellSize.width, pos.y * this.cellSize.height, this.cellSize.width, this.cellSize.height, this.colors.DEAD);
@@ -131,6 +130,8 @@ app.Board.prototype.render = function() {
 
         if (this.grid[i].state.curr) {
             this.canvas.draw(pos.x * this.cellSize.width + this.halfCell.width, pos.y * this.cellSize.height + this.halfCell.height, 1, 1, this.colors.LIVE);
+        } else {
+            this.canvas.draw(pos.x * this.cellSize.width, pos.y * this.cellSize.height, this.cellSize.width, this.cellSize.height, this.colors.DEAD);
         }
     }
 };
