@@ -54,8 +54,8 @@ var main = function() {
 
     canvas.bindTo(goog.dom.getElement('screen'));
     game.run();
-setTimeout(function(){ game.stop(); }, 1000);
-//    music.play();
+//setTimeout(function(){ game.stop(); }, 1000);
+    music.play();
 };
 
 goog.exportSymbol('main', main);
