@@ -34,6 +34,10 @@ var main = function() {
         GONE: 'rgba(200, 0, 0, 0.005)'
     };
 
+    var MAX_DARK_FADE = 0.02;
+    var darkFade = 0.00;
+    var darkFadeInc = 0.00005;
+
     var canvas = new app.Canvas(SIZE.width, SIZE.height);
     var _canvas = canvas.getElement();
     var board = null;
@@ -54,8 +58,9 @@ var main = function() {
     }, false);
 
     ctrl.refresh.addEventListener('click', function(){
-        music.pause();
-        music.currentTime = 0;
+//        music.pause();
+//        music.currentTime = 0;
+        darkFade = 0.00;
         game.stop();
         canvas.clear();
         go();
@@ -78,6 +83,10 @@ var main = function() {
                 },
                 onDraw: function(time) {
                     board.render();
+                    if (darkFade < MAX_DARK_FADE) {
+                        darkFade += darkFadeInc;
+                        colors.DEAD = 'rgba(0, 0, 0, ' + darkFade + ')';
+                    }
                 }
             });
 

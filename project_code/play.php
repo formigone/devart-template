@@ -28,10 +28,10 @@
       }
 
       #screen canvas {
-         width: 95%;
-         height: 85%;
+         width: 100%;
+         height: 90%;
          display: block;
-         margin: 2% auto 0;
+         margin: 0;
       }
 
       #ctrls {
