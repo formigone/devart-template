@@ -23,6 +23,11 @@ var main = function() {
 //        GONE: 'rgba(0, 100, 0, 0.05)'
 //    };
 
+    var go = function(){
+        game.run();
+        music.play();
+    };
+
     var colors = {
         DEAD: 'rgba(10, 10, 10, 0.02)',
         LIVE: 'rgba(255, 0, 0, 0.05)',
@@ -31,31 +36,70 @@ var main = function() {
 
     var canvas = new app.Canvas(SIZE.width, SIZE.height);
     var _canvas = canvas.getElement();
-    var board = new app.Board(canvas, colors, CELL_SIZE);
+    var board = null;
     var game = null;
     var music = new Audio('sound/hitman-2.mp3');
 
+    var ctrl = {
+        refresh: goog.dom.getElement('btn-refresh'),
+        play: goog.dom.getElement('btn-play')
+    };
+
     _canvas.width = SIZE.width * CELL_SIZE.width;
     _canvas.height = SIZE.height * CELL_SIZE.height;
-
-    game = new app.GameLoop(23, {
-        onUpdate: function(time) {
-            board.update();
-        },
-        onDraw: function(time) {
-            board.render();
-        }
-    });
 
     music.addEventListener('ended', function() {
         this.currentTime = 0;
         this.play();
     }, false);
 
+    ctrl.refresh.addEventListener('click', function(){
+        music.pause();
+        music.currentTime = 0;
+        game.stop();
+        canvas.clear();
+        go();
+    }, false);
+
+    ctrl.play.addEventListener('click', function(){
+        var attr = 'data-status';
+        var STATUS = {
+            playing: 'playing',
+            paused: 'paused'
+        };
+
+        var status = this.getAttribute(attr);
+        if (!status) {
+            board = new app.Board(canvas, colors, CELL_SIZE);
+
+            game = new app.GameLoop(23, {
+                onUpdate: function(time) {
+                    board.update();
+                },
+                onDraw: function(time) {
+                    board.render();
+                }
+            });
+
+            this.setAttribute(attr, STATUS.playing);
+            go();
+        }
+
+        if (status === STATUS.playing) {
+            game.stop();
+            this.setAttribute(attr, STATUS.paused);
+        } else if (status == STATUS.paused) {
+            game.run();
+            this.setAttribute(attr, STATUS.playing);
+        }
+    }, false);
+
     canvas.bindTo(goog.dom.getElement('screen'));
-    game.run();
-//setTimeout(function(){ game.stop(); }, 1000);
-    music.play();
+
+//setTimeout(function(){
+//    game.stop();
+//    music.pause();
+//}, 1500);
 };
 
 goog.exportSymbol('main', main);

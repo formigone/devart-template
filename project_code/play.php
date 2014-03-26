@@ -20,7 +20,7 @@
          position: absolute;
          top: 0;
          left: 0;
-         background: rgba(0, 0, 0, 0.75);
+         /*background: rgba(0, 0, 0, 0.75);*/
          width: 100%;
          height: 100%;
          margin: 0;
@@ -32,6 +32,36 @@
          height: 85%;
          display: block;
          margin: 2% auto 0;
+      }
+
+      #ctrls {
+         position: absolute;
+         z-index: 9999;
+         bottom: 0;
+         left: 0;
+         background: rgba(0, 0, 0, 0.75);
+         width: 100%;
+         margin: 0;
+         padding: 0 2.5%;
+         text-align: left;
+      }
+
+      .bio-btn {
+         padding: 25px;
+         border: 0;
+         border-left: 1px solid #fff;
+         background: transparent;
+         outline: none;
+         -webkit-transition: background 0.5s, color 0.75s;
+      }
+
+      .bio-btn:first-child {
+         border: 0;
+      }
+
+      .bio-btn:hover, .bio-btn:active {
+         background: rgba(0, 0, 0, 0.95);
+         color: #c00;
       }
    </style>
 </head>
@@ -59,7 +89,15 @@
          <div class="cover-container">
             <div id="screen"></div>
             <div id="ctrls">
-               <li><button class="btn btn-danger">Reset</button> </li>
+               <button type="button" class="bio-btn" id="btn-play">
+                  <span class="glyphicon glyphicon-play"></span>
+               </button>
+               <button type="button" class="bio-btn" id="btn-refresh">
+                  <span class="glyphicon glyphicon-refresh"></span>
+               </button>
+               <button type="button" class="bio-btn" id="btn-picture">
+                  <span class="glyphicon glyphicon-picture"></span>
+               </button>
             </div>
          </div>
 
