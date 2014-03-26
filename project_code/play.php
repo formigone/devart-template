@@ -13,7 +13,7 @@
    <link rel="stylesheet" href="css/style.css"/>
    <style>
       .stretchy {
-         background-image: url("img/banner-6.jpg");
+         background-image: url("img/biopixology-scientist.jpg");
       }
 
       #screen {
