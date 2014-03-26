@@ -17,18 +17,18 @@ var main = function() {
         height: 5
     };
 
+//    var colors = {
+//        DEAD: 'rgba(0,   0, 0, 0.05)',
+//        LIVE: 'rgba(0, 255, 0, 0.5)',
+//        GONE: 'rgba(0, 100, 0, 0.05)'
+//    };
+
     var colors = {
-        DEAD: 'rgba(0, 0, 0, 0.005)',
-        LIVE: 'rgba(0, 255, 0, 0.05)',
-        GONE: 'rgba(0, 150, 0, 0.01)'
+        DEAD: 'rgba(10, 10, 10, 0.02)',
+        LIVE: 'rgba(255, 0, 0, 0.05)',
+        GONE: 'rgba(150, 10, 0, 0.02)'
     };
 
-//    var colors = {
-//        DEAD: 'rgba(10, 10, 10, 0.01)',
-//        LIVE: 'rgba(255, 0, 0, 0.05)',
-//        GONE: 'rgba(150, 0, 0, 0.02)'
-//    };
-//
     var canvas = new app.Canvas(SIZE.width, SIZE.height);
     var _canvas = canvas.getElement();
     var board = new app.Board(canvas, colors, CELL_SIZE);
