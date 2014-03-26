@@ -23,52 +23,39 @@ var main = function() {
 //        GONE: 'rgba(0, 100, 0, 0.05)'
 //    };
 
-    var go = function(){
+    var go = function() {
         game.run();
         music.play();
     };
 
-    var colors = {
-        DEAD: 'rgba(10, 10, 10, 0.02)',
-        LIVE: 'rgba(255, 0, 0, 0.05)',
-        GONE: 'rgba(200, 0, 0, 0.005)'
+    /** @this {Element} */
+    var toggleSound = function() {
+        var attr = 'data-status';
+        var volAttr = 'data-volume';
+        var STATUS = {
+            playing: 'playing',
+            paused: 'paused'
+        };
+
+        var status = this.getAttribute(attr);
+        var volume = this.getAttribute(volAttr);
+
+        if (!status || status === STATUS.playing) {
+            this.setAttribute(attr, STATUS.paused);
+            this.setAttribute(volAttr, music.volume);
+            this.children[0].classList.remove('glyphicon-volume-off');
+            this.children[0].classList.add('glyphicon-volume-up');
+            music.volume = 0;
+        } else if (status == STATUS.paused) {
+            this.setAttribute(attr, STATUS.playing);
+            this.children[0].classList.remove('glyphicon-volume-up');
+            this.children[0].classList.add('glyphicon-volume-off');
+            music.volume = volume;
+        }
     };
 
-    var MAX_DARK_FADE = 0.02;
-    var darkFade = 0.00;
-    var darkFadeInc = 0.00005;
-
-    var canvas = new app.Canvas(SIZE.width, SIZE.height);
-    var _canvas = canvas.getElement();
-    var board = null;
-    var game = null;
-    var music = new Audio('sound/hitman-2.mp3');
-
-    var ctrl = {
-        refresh: goog.dom.getElement('btn-refresh'),
-        play: goog.dom.getElement('btn-play'),
-        sound: goog.dom.getElement('btn-toggle-sound')
-    };
-
-    _canvas.width = SIZE.width * CELL_SIZE.width;
-    _canvas.height = SIZE.height * CELL_SIZE.height;
-
-    music.addEventListener('ended', function() {
-        this.currentTime = 0;
-        this.play();
-    }, false);
-
-    ctrl.refresh.addEventListener('click', function(){
-//        music.pause();
-//        music.currentTime = 0;
-        darkFade = 0.00;
-        game.stop();
-        board = new app.Board(canvas, colors, CELL_SIZE);
-        canvas.clear();
-        go();
-    }, false);
-
-    ctrl.play.addEventListener('click', function(){
+    /** @this {Element} */
+    var play = function() {
         var attr = 'data-status';
         var STATUS = {
             playing: 'playing',
@@ -109,32 +96,53 @@ var main = function() {
             this.children[0].classList.add('glyphicon-pause');
             game.run();
         }
-    }, false);
+    };
 
-    ctrl.sound.addEventListener('click', function(){
-        var attr = 'data-status';
-        var volAttr = 'data-volume';
-        var STATUS = {
-            playing: 'playing',
-            paused: 'paused'
-        };
+    /** @this {Element} */
+    var restart = function() {
+        darkFade = 0.00;
+        game.stop();
+        board = new app.Board(canvas, colors, CELL_SIZE);
+        canvas.clear();
+        go();
+    };
 
-        var status = this.getAttribute(attr);
-        var volume = this.getAttribute(volAttr);
+    /** @this {Element} */
+    var loopMusic = function() {
+        this.currentTime = 0;
+        this.play();
+    };
 
-        if (!status || status === STATUS.playing) {
-            this.setAttribute(attr, STATUS.paused);
-            this.setAttribute(volAttr, music.volume);
-            this.children[0].classList.remove('glyphicon-volume-off');
-            this.children[0].classList.add('glyphicon-volume-up');
-            music.volume = 0;
-        } else if (status == STATUS.paused) {
-            this.setAttribute(attr, STATUS.playing);
-            this.children[0].classList.remove('glyphicon-volume-up');
-            this.children[0].classList.add('glyphicon-volume-off');
-            music.volume = volume;
-        }
-    }, false);
+    var colors = {
+        DEAD: 'rgba(10, 10, 10, 0.02)',
+        LIVE: 'rgba(255, 0, 0, 0.05)',
+        GONE: 'rgba(200, 0, 0, 0.005)'
+    };
+
+    var MAX_DARK_FADE = 0.02;
+    var darkFade = 0.00;
+    var darkFadeInc = 0.00005;
+
+    var canvas = new app.Canvas(SIZE.width, SIZE.height);
+    var _canvas = canvas.getElement();
+    var board = null;
+    var game = null;
+    var music = new Audio('sound/hitman-2.mp3');
+
+    var ctrl = {
+        refresh: goog.dom.getElement('btn-refresh'),
+        play: goog.dom.getElement('btn-play'),
+        sound: goog.dom.getElement('btn-toggle-sound'),
+        pic: goog.dom.getElement('btn-picture')
+    };
+
+    _canvas.width = SIZE.width * CELL_SIZE.width;
+    _canvas.height = SIZE.height * CELL_SIZE.height;
+
+    music.addEventListener('ended', loopMusic, false);
+    ctrl.refresh.addEventListener('click', restart, false);
+    ctrl.play.addEventListener('click', play, false);
+    ctrl.sound.addEventListener('click', toggleSound, false);
 
     canvas.bindTo(goog.dom.getElement('screen'));
 };
