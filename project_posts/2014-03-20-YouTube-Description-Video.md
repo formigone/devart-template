@@ -13,6 +13,4 @@ Rules
 
 ![Example Image](../project_images/cover.jpg?raw=true "Example Image")
 
-https://www.youtube.com/watch?v=FdMzngWchDk
-
-https://www.youtube.com/watch?v=k2IZ1qsx4CM
+https://www.youtube.com/watch?v=CgOcEZinQ2I
