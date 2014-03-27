@@ -3,6 +3,7 @@ goog.provide('app.go');
 goog.require('app.Canvas');
 goog.require('app.Board');
 goog.require('app.GameLoop');
+goog.require('app.ImageProcessor');
 
 goog.require('goog.dom');
 
@@ -107,35 +108,35 @@ var main = function() {
 
     /** @this {Element} */
     var getImage = function(e){
-        var g = [];
-        var rnd = parseInt(Math.random() * 100) % 3 + 3;
-        var files = e.target.files;
-        var reader = new FileReader();
-        var img = null;
-
-        if (files && files[0]) {
-            reader.onload = function(eReader) {
-                img = eReader.target.result;
-
-                if (img) {
-                    // TODO: analyze image and create grid from it
-                    document.body.style.background = 'url(' + img + ')';
-                }
-            };
-
-            reader.readAsDataURL(files[0]);
-        }
-
-        if (!board) {
-            ctrl.play.click();
-        }
-
-        for (var i = 0, len = SIZE.width * SIZE.height; i < len; i++) {
-            g[i] = i % rnd == 0;
-        }
-
-        canvas.clear();
-        board.seed(g);
+//        var g = [];
+//        var rnd = parseInt(Math.random() * 100, 10) % 3 + 3;
+//        var files = e.target.files;
+//        var reader = new FileReader();
+//        var img = null;
+//
+//        if (files && files[0]) {
+//            reader.onload = function(eReader) {
+//                img = eReader.target.result;
+//
+//                if (img) {
+//                    // TODO: analyze image and create grid from it
+//                    document.body.style.background = 'url(' + img + ')';
+//                }
+//            };
+//
+//            reader.readAsDataURL(files[0]);
+//        }
+//
+//        if (!board) {
+//            ctrl.play.click();
+//        }
+//
+//        for (var i = 0, len = SIZE.width * SIZE.height; i < len; i++) {
+//            g[i] = i % rnd == 0;
+//        }
+//
+//        canvas.clear();
+//        board.seed(g);
     };
 
     /** @this {Element} */
@@ -167,6 +168,19 @@ var main = function() {
         pic: goog.dom.getElement('btn-picture')
     };
 
+    var processor = new app.ImageProcessor(ctrl.pic, SIZE, function(grid){
+        if (!board) {
+            ctrl.play.click();
+        }
+
+//        for (var i = 0, len = SIZE.width * SIZE.height; i < len; i++) {
+//            grid[i] = i % 3 == 0;
+//        }
+
+        canvas.clear();
+        board.seed(grid);
+    });
+
     _canvas.width = SIZE.width * CELL_SIZE.width;
     _canvas.height = SIZE.height * CELL_SIZE.height;
 
@@ -174,7 +188,6 @@ var main = function() {
     ctrl.refresh.addEventListener('click', restart, false);
     ctrl.play.addEventListener('click', play, false);
     ctrl.sound.addEventListener('click', toggleSound, false);
-    ctrl.pic.addEventListener('change', getImage, false);
 
     canvas.bindTo(goog.dom.getElement('screen'));
 };
