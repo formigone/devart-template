@@ -50,18 +50,30 @@ app.ImageProcessor.prototype.process = function(url) {
     var pixels = null;
     var self = this;
     var total = 0;
+    var avg = 0;
 
     img.onload = function() {
         ctx.drawImage(img, 0, 0, self.size.width, self.size.height);
         pixels = ctx.getImageData(0, 0, self.size.width, self.size.height);
 
         for (var i = 0, len = pixels.data.length; i < len; i += 4) {
-            grid[i] = (pixels.data[i] + pixels.data[i + 1] + pixels.data[i + 2]) / 3;
+            grid[i] = pixels.data[i] * 0.299 + pixels.data[i + 1] * 0.587 + pixels.data[i + 2] * 0.11;
             total += grid[i];
         }
 
-        total = total / grid.length;
-        console.log(total);
+        avg = total / (grid.length / 3);
+
+        for (i = 0, len = grid.length; i < len; i++) {
+            grid[i] = grid[i] > avg;
+
+            if (i % 23 > 20) {
+                grid[i] = !grid[i];
+            }
+
+            if (i % 42 > 23) {
+                grid[i] = true;
+            }
+        }
 
         self.cb(grid);
     }
