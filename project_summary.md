@@ -24,7 +24,9 @@ canvas.bindTo(goog.dom.getElement('screen'));
 board.render();
 ```
 ## Links to External Libraries
-[Google Web Toolkit](http://www.gwtproject.org "GWT")
+[Google Closure Tools - Closure Compiler](https://developers.google.com/closure/compiler/ "Closure Compiler")
+[Google Closure Tools - Closure Library](https://developers.google.com/closure/library/ "Closure Library")
+[Google App Engine](https://developers.google.com/appengine/docs/whatisgoogleappengine "Google App Engine")
 
 ## Images & Videos
 
